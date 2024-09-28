@@ -18,9 +18,9 @@
 echo form_open(base_url('belanja/add')); 
 // elemen yang dibawa
 echo form_hidden('id',$produk->id_produk);
-echo form_hidden('qty', 1);
-echo form_hidden('price',$produk->harga);
-echo form_hidden('name', $produk->nama_produk);
+// echo form_hidden('qty', 1);
+// echo form_hidden('price',$produk->harga);
+// echo form_hidden('name', $produk->nama_produk);
 // elemen redirect
 echo form_hidden('redirect_page', str_replace('index.php/','',current_url()));
 ?>
@@ -37,17 +37,11 @@ echo form_hidden('redirect_page', str_replace('index.php/','',current_url()));
 						<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
 					</a>
 
-					<div class="block2-btn-addcart w-size1 trans-0-4">
-						<!-- Button -->
-						<button type="submit" value="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-							Add to Cart
-						</button>
-					</div>
 				</div>
 			</div>
 
 			<div class="block2-txt p-t-20">
-				<a href="<?php echo base_url('produk/detail/'.$produk->slug_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
+				<a href="<?php echo base_url('produk/detail/'.$produk->id_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
 					<?php echo $produk->nama_produk; ?>
 				</a>
 

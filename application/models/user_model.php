@@ -12,7 +12,7 @@ public function __construct()
 	public function listing()
 	{
 		$this->db->select('*');
-		$this->db->from('users');
+		$this->db->from('user');
 		$this->db->order_by('id_user', 'desc');
 		$query = $this->db->get();
 		return $query->result();
@@ -21,7 +21,7 @@ public function __construct()
 	public function detail($id_user)
 	{
 		$this->db->select('*');
-		$this->db->from('users');
+		$this->db->from('user');
 		$this->db->where('id_user', $id_user);
 		$this->db->order_by('id_user', 'desc');
 		$query = $this->db->get();
@@ -32,7 +32,7 @@ public function __construct()
 	public function login($username,$password)
 	{
 		$this->db->select('*');
-		$this->db->from('users');
+		$this->db->from('user');
 		$this->db->where(array('username' => $username,
 							   'password' => SHA1($password)));
 		$this->db->order_by('id_user', 'desc');
@@ -43,19 +43,19 @@ public function __construct()
 	// Tambah
 	public function tambah($data)
 	{
-		$this->db->insert('users', $data);
+		$this->db->insert('user', $data);
 	}
 	// delete 
 	public function delete($data)
 	{
 		$this->db->where('id_user', $data['id_user']);
-		$this->db->delete('users', $data);
+		$this->db->delete('user', $data);
 	}
 	// edit
 	public function edit($data)
 	{
 		$this->db->where('id_user', $data['id_user']);
-		$this->db->update('users', $data);
+		$this->db->update('user', $data);
 	}
 
 }

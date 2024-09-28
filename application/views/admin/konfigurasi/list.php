@@ -119,14 +119,6 @@ echo form_open_multipart(base_url('admin/konfigurasi'),'class="form-horizontal"'
 </div>
 
 <div class="form-group">
-  <label class="col-md-3 control-label">Rekening Pembayaran :</label>
-
-  <div class="col-md-9">
-    <textarea name="rekening_pembayaran" class="form-control" placeholder="Rekening Pembayaran"><?php echo $konfigurasi->rekening_pembayaran; ?></textarea>
-  </div>
-</div>
-
-<div class="form-group">
   <label class="col-md-3 control-label"></label>
   <div class="col-md-5">
     <button class="btn btn-success btn-lg" name="Submit" type="Submit"><i class="fa fa-save"></i> Simpan</button>

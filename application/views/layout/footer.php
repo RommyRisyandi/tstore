@@ -205,7 +205,11 @@ $nav_produk_footer 			= $this->konfigurasi_model->nav_produk();
 
 
 <!--===============================================================================================-->
-	<script src="<?php echo base_url();?>/asset/js/main.js"></script>
+<script src="<?php echo base_url();?>/asset/js/main.js"></script>
+<!-- Custom -->
+<!--===============================================================================================-->
+<script src="<?php echo base_url();?>/asset5/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url();?>/asset5/js/jquery.min.js"></script>
 
 </body>
 </html>

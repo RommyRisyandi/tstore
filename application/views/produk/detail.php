@@ -23,23 +23,17 @@
 			<div class="wrap-slick3-dots"></div>
 
 			<div class="slick3">
-				<div class="item-slick3" data-thumb="<?php echo base_url('assets/upload/images/thumbs/'.$produk->gambar); ?>">
+				<div class="item-slick3" data-thumb="<?php echo base_url('assets/upload/images/'.$produk->gambar); ?>">
 					<div class="wrap-pic-w">
 						<img src="<?php echo base_url('assets/upload/images/'.$produk->gambar); ?>" alt="<?php echo $produk->nama_produk; ?>">
 					</div>
-				</div>
-				<?php if($gambar) {
-				foreach($gambar as $gambar) { 
-				?>
-				<div class="item-slick3" data-thumb="<?php echo base_url('assets/upload/images/thumbs/'.$gambar->gambar); ?>">
-					<div class="wrap-pic-w">
-						<img src="<?php echo base_url('assets/upload/images/thumbs/'.$gambar->gambar); ?>" alt="<?php echo $gambar->judul_gambar; ?>">
+					
+					<div class="rating">
+						Nilai Rating : ☆ <?php echo number_format($produk->total_rating,'0',','); ?>
 					</div>
+				
 				</div>
-				<?php 
-				}
-					}
-				 ?>
+				
 			</div>
 		</div>
 	</div>
@@ -48,51 +42,70 @@
 		<h1 class="product-detail-name m-text20 p-b-13">
 			<?php echo $title; ?>
 		</h1>
+		<div class="clearfix"></div>
+		<?php if($this->session->flashdata('sukses')) {
+			echo '<div class="alert alert-warning">';
+			echo $this->session->flashdata('sukses');
+			echo '</div>';
+		} ?>
 
-		<?php 
-		// form untuk memproses belanjaan
-		echo form_open(base_url('belanja/add')); 
+		<?php
+		if(isset($error)) {
+			echo '<p class="alert alert-warning">';
+			echo $error;
+			echo '</p>';
+		}
+		// Notifikasi error
+		echo validation_errors('<div class="alert alert-warning">','</div>'); 
+		// form untuk memproses rating
+		echo form_open(base_url('produk/detail/'.$produk->id_produk)); 
 		// elemen yang dibawa
 		echo form_hidden('id',$produk->id_produk);
 		//echo form_hidden('qty', 1);
-		echo form_hidden('price',$produk->harga);
-		echo form_hidden('name', $produk->nama_produk);
+		// echo form_hidden('price',$produk->harga);
+		// echo form_hidden('name', $produk->nama_produk);
 		// elemen redirect
 		echo form_hidden('redirect_page', str_replace('index.php/','',current_url()));
 		?>
 
 		<span class="m-text14">
-			IDR <?php echo number_format($produk->harga,'0',',','.'); ?>
+			Rp. <?php echo number_format($produk->harga,'0',',','.'); ?>
 		</span>
 
 		<p class="s-text8 p-t-10">
 			<?php echo $produk->keterangan; ?>
 		</p>
 
-		<!--  -->
-		<div class="p-t-33 p-b-60">
-			
-
+		<!-- Form Rating  -->
+		<div class=" p-b-60">
 			<div class="flex-r-m flex-w p-t-10">
-				<div class="w-size16 flex-m flex-w">
-					<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-						<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-							<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-						</button>
+			<form class="leave-comment">
+						<h4 class="m-text26 p-b-36 p-t-15">
+							Silahkan Masukan Rating Produk ini
+						</h4>
 
-						<input class="size8 m-text18 t-center num-product" type="number" name="qty" value="1">
+						<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="nama" placeholder="Nama Anda"
+							value="<?php echo set_value('nama');?>" required>
+						</div>
 
-						<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-							<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-						</button>
-					</div>
+						<div class="rating">
+							<input type="radio" name="nilai_rating" value="5" id="5"><label for="5">☆</label>
+							<input type="radio" name="nilai_rating" value="4" id="4"><label for="4">☆</label>
+							<input type="radio" name="nilai_rating" value="3" id="3"><label for="3">☆</label>
+							<input type="radio" name="nilai_rating" value="2" id="2"><label for="2">☆</label>
+							<input type="radio" name="nilai_rating" value="1" id="1"><label for="1">☆</label>
+						</div>
 
-					<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-						<!-- Button -->
-						<button type="submit" name="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-							Add to Cart
-						</button>
-					</div>
+						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="keterangan" placeholder="Masukan Saran Anda..." value="<?php echo set_value('keterangan'); ?>"></textarea>
+
+						<div class="w-size25">
+							<!-- Button -->
+							<button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" type="submit">
+								Kirim
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -122,12 +135,12 @@
 		<div class="item-slick2 p-l-15 p-r-15">
 		<?php 
 		// form untuk memproses belanjaan
-		echo form_open(base_url('belanja/add')); 
+		echo form_open(base_url('produk/detail/')); 
 		// elemen yang dibawa
 		echo form_hidden('id',$produk_related->id_produk);
-		echo form_hidden('qty', 1);
-		echo form_hidden('price',$produk_related->harga);
-		echo form_hidden('name', $produk_related->nama_produk);
+		// echo form_hidden('qty', 1);
+		// echo form_hidden('price',$produk_related->harga);
+		// echo form_hidden('name', $produk_related->nama_produk);
 		// elemen redirect
 		echo form_hidden('redirect_page', str_replace('index.php/','',current_url()));
 		?>
@@ -144,22 +157,17 @@
 								<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
 							</a>
 
-							<div class="block2-btn-addcart w-size1 trans-0-4">
-								<!-- Button -->
-								<button type="submit" value="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-									Add to Cart
-								</button>
-							</div>
+							
 						</div>
 					</div>
 
 					<div class="block2-txt p-t-20">
-						<a href="<?php echo base_url('produk/detail/'.$produk_related->slug_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
+						<a href="<?php echo base_url('produk/detail/'.$produk_related->id_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
 							<?php echo $produk_related->nama_produk; ?>
 						</a>
 
 						<span class="block2-price m-text6 p-r-5">
-							IDR <?php echo number_format($produk_related->harga,'0',',','.'); ?>
+							Rp. <?php echo number_format($produk_related->harga,'0',',','.'); ?>
 						</span>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 <!-- Title Page -->
-<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(<?php echo base_url(); ?>asset/images/heading-pages-02.jpg);">
+<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(<?php echo base_url(); ?>asset4/wafle.jpg);">
 <h2 class="l-text2 t-center">
 	<?php echo $title; ?>
 </h2>
@@ -55,7 +55,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-							<img src="<?php echo base_url('assets/upload/images/thumbs/'.$produk->gambar); ?>" alt="<?php echo $produk->nama_produk; ?>">
+							<img src="<?php echo base_url('assets/upload/images/'.$produk->gambar); ?>" alt="<?php echo $produk->nama_produk; ?>">
 
 							<div class="block2-overlay trans-0-4">
 								<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -63,22 +63,16 @@
 									<i class="fa fa-eye dis-none" aria-hidden="true"></i>
 								</a>
 
-								<div class="block2-btn-addcart w-size1 trans-0-4">
-									<!-- Button -->
-									<button type="submit" value="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-										Add to Cart
-									</button>
-								</div>
 							</div>
 						</div>
 
 						<div class="block2-txt p-t-20">
-							<a href="<?php echo base_url('produk/detail/'.$produk->slug_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
+							<a href="<?php echo base_url('produk/detail/'.$produk->id_produk); ?>" class="block2-name dis-block s-text3 p-b-5">
 							<?php echo $produk->nama_produk; ?>
 							</a>
 
 							<span class="block2-price m-text6 p-r-5">
-								IDR <?php echo number_format($produk->harga,'0',',','.'); ?>
+								Rp. <?php echo number_format($produk->harga,'0',',','.'); ?>
 							</span>
 						</div>
 					</div>

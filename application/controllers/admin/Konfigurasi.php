@@ -25,10 +25,10 @@ class Konfigurasi extends CI_Controller {
 		if($valid->run()===FALSE) {
 			// End Validasi
 
-		$data = array( 'title' 	=> 'Konfigurasi Website',
-					   'konfigurasi'  => $konfigurasi,
-					   'isi'  	=> 'admin/konfigurasi/list'
-					  );
+		$data = array( 'title' 				=> 'Konfigurasi Website',
+									 'konfigurasi'  => $konfigurasi,
+									 'isi'  				=> 'admin/konfigurasi/list'
+					  		 );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	// Masuk database
 	}else{
@@ -43,9 +43,9 @@ class Konfigurasi extends CI_Controller {
 					  'telepon' 			=> $i->post('telepon'),
 					  'alamat' 				=> $i->post('alamat'),
 					  'facebook' 			=> $i->post('facebook'),
-					  'instagram' 			=> $i->post('instagram'),
-					  'deskripsi' 			=> $i->post('deskripsi'),
-					  'rekening_pembayaran' => $i->post('rekening_pembayaran'));
+					  'instagram' 		=> $i->post('instagram'),
+					  'deskripsi' 		=> $i->post('deskripsi')
+					  );
 
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data berhasil diupdate');
@@ -71,48 +71,33 @@ class Konfigurasi extends CI_Controller {
 
 			$config['upload_path'] 		= './assets/upload/images/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['max_size']  		= '2400';// dalam KB
-			$config['max_width']  		= '2024';
-			$config['max_height']  		= '2024';
+			$config['max_size']  			= '2400';// dalam KB
+			$config['max_width']  		= '4000';
+			$config['max_height']  		= '4000';
 			
 			$this->load->library('upload', $config);
 			
 			if(!$this->upload->do_upload('logo')){
 			// End Validasi
 
-		$data = array( 'title' 			=> 'Konfigurasi Logo Website',
-					   'konfigurasi' 	=> $konfigurasi,
-					   'error'			=> $this->upload->display_errors(),
-					   'isi'  			=> 'admin/konfigurasi/logo'
-					  );
+		$data = array( 'title' 				=> 'Konfigurasi Logo Website',
+									 'konfigurasi' 	=> $konfigurasi,
+									 'error'				=> $this->upload->display_errors(),
+									 'isi'  				=> 'admin/konfigurasi/logo'
+					  		 );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	// Masuk database
 	}else{
 		$upload_gambar = array('upload_data' => $this->upload->data());
-	// Create Thumbnail Gambar
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = './assets/upload/images/'.$upload_gambar['upload_data']['file_name'];
-		// Lokasi Folder Thumbnail
-		$config['new_image'] = './assets/upload/images/thumbs/'; 
-		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
-		$config['width'] = 250; //pixel
-		$config['height'] = 250; //pixel
-		$config['thumb_marker'] ='';
-
-		$this->load->library('image_lib', $config);
-
-		$this->image_lib->resize();
-	// End Create Thumbnail
 
 		$i = $this->input;
 
 		$data = array('id_konfigurasi'	=> $konfigurasi->id_konfigurasi,
-					  'namaweb'			=> $i->post('namaweb'),
-					  // Disimpan nama file gambar
-					  'logo' 			=> $upload_gambar['upload_data']['file_name']
+					  			'namaweb'					=> $i->post('namaweb'),
+					  			// Disimpan nama file gambar
+					  			'logo' 						=> $upload_gambar['upload_data']['file_name']
 		
-  					  );
+  					  	 );
 
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data berhasil diupdate');
@@ -122,10 +107,7 @@ class Konfigurasi extends CI_Controller {
 			$i = $this->input;
 
 		$data = array('id_konfigurasi'	=> $konfigurasi->id_konfigurasi,
-					  'namaweb'			=> $i->post('namaweb'),
-					  // Disimpan nama file gambar
-					  //'logo' 			=> $upload_gambar['upload_data']['file_name']
-		
+					  			'namaweb'					=> $i->post('namaweb')
   					  );
 
 		$this->konfigurasi_model->edit($data);
@@ -134,10 +116,10 @@ class Konfigurasi extends CI_Controller {
 
 		}}
 	// End Masuk database
-		$data = array( 'title' 			=> 'Konfigurasi Logo Website',
-					   'konfigurasi' 	=> $konfigurasi,
-					   'isi'  			=> 'admin/konfigurasi/logo'
-					  );
+		$data = array( 'title' 				=> 'Konfigurasi Logo Website',
+					   			 'konfigurasi' 	=> $konfigurasi,
+					   			 'isi'  				=> 'admin/konfigurasi/logo'
+					  		 );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	}
 
@@ -158,48 +140,32 @@ class Konfigurasi extends CI_Controller {
 
 			$config['upload_path'] 		= './assets/upload/images/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['max_size']  		= '2400';// dalam KB
-			$config['max_width']  		= '2024';
-			$config['max_height']  		= '2024';
+			$config['max_size']  			= '2400';// dalam KB
+			$config['max_width']  		= '4000';
+			$config['max_height']  		= '4000';
 			
 			$this->load->library('upload', $config);
 			
 			if(!$this->upload->do_upload('icon')){
 			// End Validasi
 
-		$data = array( 'title' 			=> 'Konfigurasi Icon Website',
-					   'konfigurasi' 	=> $konfigurasi,
-					   'error'			=> $this->upload->display_errors(),
-					   'isi'  			=> 'admin/konfigurasi/icon'
-					  );
+		$data = array( 'title' 				=> 'Konfigurasi Icon Website',
+									 'konfigurasi' 	=> $konfigurasi,
+									 'error'				=> $this->upload->display_errors(),
+									 'isi'  				=> 'admin/konfigurasi/icon'
+					  		 );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	// Masuk database
 	}else{
 		$upload_gambar = array('upload_data' => $this->upload->data());
-	// Create Thumbnail Gambar
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = './assets/upload/images/'.$upload_gambar['upload_data']['file_name'];
-		// Lokasi Folder Thumbnail
-		$config['new_image'] = './assets/upload/images/thumbs/'; 
-		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
-		$config['width'] = 250; //pixel
-		$config['height'] = 250; //pixel
-		$config['thumb_marker'] ='';
-
-		$this->load->library('image_lib', $config);
-
-		$this->image_lib->resize();
-	// End Create Thumbnail
 
 		$i = $this->input;
 
 		$data = array('id_konfigurasi'	=> $konfigurasi->id_konfigurasi,
-					  'namaweb'			=> $i->post('namaweb'),
-					  // Disimpan nama file gambar
-					  'icon' 			=> $upload_gambar['upload_data']['file_name']
-		
-  					  );
+					  			'namaweb'					=> $i->post('namaweb'),
+					  			// Disimpan nama file gambar
+					    		'icon' 						=> $upload_gambar['upload_data']['file_name']
+  					  		);
 
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data berhasil diupdate');
@@ -209,10 +175,7 @@ class Konfigurasi extends CI_Controller {
 			$i = $this->input;
 
 		$data = array('id_konfigurasi'	=> $konfigurasi->id_konfigurasi,
-					  'namaweb'			=> $i->post('namaweb'),
-					  // Disimpan nama file gambar
-					  //'logo' 			=> $upload_gambar['upload_data']['file_name']
-		
+					  			'namaweb'					=> $i->post('namaweb')
   					  );
 
 		$this->konfigurasi_model->edit($data);
@@ -221,10 +184,10 @@ class Konfigurasi extends CI_Controller {
 
 		}}
 	// End Masuk database
-		$data = array( 'title' 			=> 'Konfigurasi Icon Website',
-					   'konfigurasi' 	=> $konfigurasi,
-					   'isi'  			=> 'admin/konfigurasi/icon'
-					  );
+		$data = array( 'title' 				=> 'Konfigurasi Icon Website',
+					   			 'konfigurasi' 	=> $konfigurasi,
+					   			 'isi'  				=> 'admin/konfigurasi/icon'
+					  		 );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	}
 

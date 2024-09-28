@@ -42,6 +42,11 @@ $site = $this->konfigurasi_model->listing();
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asset/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asset/css/main.css">
 <!--===============================================================================================-->
+<!-- Rating -->
+<!-- Custom CSS -->
+<link href="<?php echo base_url(); ?>asset5/css/style.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>asset5/css/bootstrap.min.css" rel="stylesheet">
+<!--===============================================================================================-->
 <style type="text/css" media="screen">
 	ul.pagination {
 		padding: 0 10px;
@@ -52,10 +57,21 @@ $site = $this->konfigurasi_model->listing();
 	.pagination a, .pagination b{
 		padding: 10px 20px;
 		text-decoration: none;
+		border-radius: 50px;
+		margin: 5px;
 		float: left;
+	}
+	.pagination strong {
+		padding: 10px 20px;
+		text-decoration: none;
+		border-radius: 50px;
+		background-color: black;
+		color: white;
+		float:left
 	}
 	.pagination a {
 		background-color: red;
+		
 		color: white;
 	}
 	.pagination b {

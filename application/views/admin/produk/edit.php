@@ -24,15 +24,6 @@ echo form_open_multipart(base_url('admin/produk/edit/'.$produk->id_produk),'clas
 </div>
 
 <div class="form-group">
-  <label class="col-md-2 control-label">Kode Produk :</label>
-
-  <div class="col-md-5">
-    <input type="text" name="kode_produk" class="form-control"  placeholder="Kode Produk"
-    value="<?php echo $produk->kode_produk;?>" required>
-  </div>
-</div>
-
-<div class="form-group">
   <label class="col-md-2 control-label">Kategori Produk :</label>
 
   <div class="col-md-5">
@@ -40,6 +31,20 @@ echo form_open_multipart(base_url('admin/produk/edit/'.$produk->id_produk),'clas
       <?php foreach ($kategori as $kategori) { ?>
       <option value="<?php echo $kategori->id_kategori; ?>" <?php if($produk->id_kategori==$kategori->id_kategori) { echo "selected";} ?>>
         <?php echo $kategori->nama_kategori; ?>
+        </option>
+      <?php } ?>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Toko Produk :</label>
+
+  <div class="col-md-5">
+    <select name="id_toko" class="form-control">
+      <?php foreach ($toko as $toko) { ?>
+      <option value="<?php echo $toko->id_toko; ?>" <?php if($produk->id_toko==$toko->id_toko) { echo "selected";} ?>>
+        <?php echo $toko->nama_toko; ?>
         </option>
       <?php } ?>
     </select>
@@ -55,47 +60,11 @@ echo form_open_multipart(base_url('admin/produk/edit/'.$produk->id_produk),'clas
   </div>
 </div>
 
-
-<div class="form-group">
-  <label class="col-md-2 control-label">Stok Produk :</label>
-
-  <div class="col-md-5">
-    <input type="number" name="stok" class="form-control"  placeholder="Stok Produk"
-    value="<?php echo $produk->stok;?>" required>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-2 control-label">Berat Produk :</label>
-
-  <div class="col-md-5">
-    <input type="text" name="berat" class="form-control"  placeholder="Berat Produk"
-    value="<?php echo $produk->berat;?>" required>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-2 control-label">Ukuran Produk :</label>
-
-  <div class="col-md-5">
-    <input type="text" name="ukuran" class="form-control"  placeholder="Ukuran Produk"
-    value="<?php echo $produk->ukuran;?>" required>
-  </div>
-</div>
-
 <div class="form-group">
   <label class="col-md-2 control-label">Keterangan Produk :</label>
 
   <div class="col-md-10">
     <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="editor"><?php echo $produk->keterangan; ?></textarea>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-2 control-label">Keyword (untuk SEO Google) :</label>
-
-  <div class="col-md-10">
-    <textarea name="keywords" class="form-control" placeholder="Keyword (untuk SEO Google)"><?php echo $produk->keywords; ?></textarea>
   </div>
 </div>
 

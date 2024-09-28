@@ -8,9 +8,6 @@
         <li class="header">MAIN NAVIGATION</li>
         <!-- Menu Dashboard -->
         <li><a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard text-aqua"></i> <span>Dashboard</span></a></li>
-        
-         <!-- Menu Transaksi -->
-        <li><a href="<?php echo base_url('admin/transaksi'); ?>"><i class="fa fa-check text-aqua"></i> <span>Transaksi</span></a></li>
 
         <!-- Menu Produk -->
         <li class="treeview">
@@ -23,12 +20,38 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('admin/produk'); ?>"><i class="fa fa-table"></i> Data Produk</a></li>
             <li><a href="<?php echo base_url('admin/produk/tambah'); ?>"><i class="fa fa-plus"></i> Tambah Produk</a></li>
+            <li><a href="<?php echo base_url('admin/produk/rating'); ?>"><i class="fa fa-star"></i> Data Rating</a></li>
             <li><a href="<?php echo base_url('admin/kategori'); ?>"><i class="fa fa-tags"></i> Kategori Produk</a></li>
           </ul>
         </li>
 
-        <!-- Menu Rekening -->
-        <li><a href="<?php echo base_url('admin/rekening'); ?>"><i class="fa fa-dollar text-aqua"></i> <span>Data Rekening</span></a></li>
+        <!-- Menu Toko & Cabang -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cart-plus"></i> <span>Toko & Cabang</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('admin/toko'); ?>"><i class="fa fa-table"></i>Data Toko dan Cabang</a></li>
+            <li><a href="<?php echo base_url('admin/toko/tambah'); ?>"><i class="fa fa-plus"></i> Tambah Toko & Cabang</a></li>
+          </ul>
+        </li>
+
+        <!-- Menu Berita -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-newspaper-o"></i> <span>Berita</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('admin/berita'); ?>"><i class="fa fa-table"></i> Data Berita</a></li>
+            <li><a href="<?php echo base_url('admin/berita/tambah'); ?>"><i class="fa fa-plus"></i> Tambah Berita</a></li>
+          </ul>
+        </li>
 
         <!-- Menu User -->
         <li class="treeview">
@@ -43,6 +66,7 @@
             <li><a href="<?php echo base_url('admin/home/tambah'); ?>"><i class="fa fa-plus"></i> Tambah User</a></li>
           </ul>
         </li>
+
         <!-- Menu Konfigurasi -->
         <li class="treeview">
           <a href="#">
@@ -55,8 +79,11 @@
             <li><a href="<?php echo base_url('admin/konfigurasi'); ?>"><i class="fa fa-home"></i> Konfigurasi Umum</a></li>
             <li><a href="<?php echo base_url('admin/konfigurasi/logo'); ?>"><i class="fa fa-image"></i> Konfigurasi Logo</a></li>
             <li><a href="<?php echo base_url('admin/konfigurasi/icon'); ?>"><i class="fa fa-home"></i> Konfigurasi Icon</a></li>
+            <li><a href="<?php echo base_url('admin/slider'); ?>"><i class="fa fa-image"></i> Slider</a></li>
+            <li><a href="<?php echo base_url('admin/slider/tambah'); ?>"><i class="fa fa-plus"></i> Tambah Slider</a></li>
           </ul>
         </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
